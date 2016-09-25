@@ -8,17 +8,10 @@ angular.module('ShoppingListCheckOff', [])
 
 ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
 AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
-// ShoppingListCheckOffService.$inject = ['$scope'];
 
 function ToBuyShoppingController(ShoppingListCheckOffService) {
   var buyList = this;
   buyList.items = ShoppingListCheckOffService.getBuyList();
-  // [{ name: "cookies", quantity: 10 },
-  //                     { name: "milk", quantity: 4 },
-  //                     { name: "butter", quantity: 1 },
-  //                     { name: "spread", quantity: 5 },
-  //                     // { name: "TP", quantity: 24 },
-  //                     { name: "pizza", quantity: 2 }];
 
   buyList.isEmpty = function() {
     return ShoppingListCheckOffService.getBuyList().length === 0;
@@ -26,10 +19,8 @@ function ToBuyShoppingController(ShoppingListCheckOffService) {
 
   buyList.buy = function(item,index) {
     ShoppingListCheckOffService.buy(item, index);
-    console.log(item);
-    console.log(index);
   }
-};
+}
 
 function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
  var boughtList = this;
@@ -39,7 +30,7 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
  boughtList.isEmpty = function() {
    return ShoppingListCheckOffService.getBoughtList().length === 0;
  }
-};
+}
 
 function ShoppingListCheckOffService() {
   var service = this;
